@@ -4,14 +4,23 @@ import Navbar from '../../components/Navbar';
 import CreateTodo from './components/CreateTodo';
 import TodoList from './components/TodoList';
 
+import {loadData, saveData} from '../../services/localStorage';
+
 class Todo extends React.Component {
     constructor(props) {
         super();
-        
-        this.state = {
+
+        const initialState = {
             themeID: 1,
-            todos: []
+            todos: [],
+            ...loadData()
         }
+        
+        this.state = initialState;
+    }
+    
+    componentDidUpdate() {
+        saveData(this.state);
     }
     
     render() {
