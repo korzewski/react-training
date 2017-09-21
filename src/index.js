@@ -1,12 +1,12 @@
 import React from 'react';
 import {render} from 'react-dom';
-import Home from './scenes/Home';
+import Todo from './scenes/Todo';
 
 import './styles/app.scss';
 
 const Root = () => {
     return (
-        <Home />
+        <Todo />
     )
 }
 
