@@ -1,3 +1,5 @@
+@import 'mixins';
+
 $font: monospace;
 $bgc: #eee;
 $color-1: #001f3f;
@@ -18,10 +20,10 @@ input, button {
     justify-content: center;
     align-items: center;
     height: 80px;
-    background-color: $color-1;
-    color: lighten($color-1, 40);
     font-size: 50px;
     line-height: 50px;
+    user-select: none;
+    cursor: default;
 }
 
 $width: 500px;
@@ -108,5 +110,27 @@ $width: 500px;
                 }
             }
         }
+    }
+    
+    
+    
+    &--theme-1 {
+        @include theme(#001f3f);
+    }
+    
+    &--theme-2 {
+        @include theme(#FF851B);
+    }
+    
+    &--theme-3 {
+        @include theme(#39CCCC);
+    }
+    
+    &--theme-4 {
+        @include theme(#2ECC40);
+    }
+    
+    &--theme-5 {
+        @include theme(#0074D9);
     }
 }

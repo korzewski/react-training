@@ -9,20 +9,17 @@ class Todo extends React.Component {
         super();
         
         this.state = {
-            todos: [
-                {name: 'test'},
-                {name: 'example'},
-                {name: 'abc'},
-            ]
+            themeID: 1,
+            todos: []
         }
     }
     
     render() {
-        const {todos} = this.state;
+        const {todos, themeID} = this.state;
         
         return (
-            <div className="todo">
-                <Navbar title="todo" />
+            <div className={`todo todo--theme-${themeID}`}>
+                <Navbar title="todo" changeThemeHandle={this.changeTheme.bind(this)} />
                 <CreateTodo addTodo={this.addTodo.bind(this)} />
                 <TodoList todos={todos} toggleTodoHandle={this.toggleTodo.bind(this)} removeTodoHandle={this.removeTodo.bind(this)} />
             </div>
@@ -58,6 +55,17 @@ class Todo extends React.Component {
         todos.splice(todoIndex, 1);
         
         this.setState({todos});
+    }
+    
+    changeTheme() {
+        let {themeID} = this.state;
+        
+        themeID++;
+        if(themeID > 5) {
+            themeID = 1;
+        }
+        
+        this.setState({themeID});
     }
 }
 
