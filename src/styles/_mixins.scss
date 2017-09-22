@@ -1,0 +1,15 @@
+@mixin theme($color) {
+    .navbar {
+        background-color: $color;
+        color: lighten($color, 40);
+    }
+    
+    .todo-list__item-name {
+        &::before { border-color: $color }
+        
+        &--done {
+            color: $color;
+            &::before { background-color: $color }
+        }
+    }
+}

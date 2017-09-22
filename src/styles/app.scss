@@ -1,3 +1,138 @@
+@import 'mixins';
+
+$font: monospace;
+$bgc: #eee;
+$color-1: #001f3f;
+
 body {
-    background-color: #ddd;
+    background-color: $bgc;
+    margin: 0;
+    padding: 0;
+    font-family: $font;
+}
+
+input, button {
+    font-family: $font;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    font-size: 50px;
+    line-height: 50px;
+    user-select: none;
+    cursor: default;
+    background-color: $color-1;
+    color: lighten($color-1, 40);
+}
+
+$width: 500px;
+
+.todo {
+    .new-todo {
+        display: flex;
+        width: $width;
+        margin: 50px auto 20px;
+        
+        > * {
+            min-height: 30px;
+        }
+        
+        &__input {
+            width: 100%;
+            padding: 0 5px;
+        }
+        
+        &__button {
+            width: 100px;
+        }
+    }
+    
+    .todo-list {
+        width: $width;
+        margin: auto;
+        
+        &__item {
+            border-bottom: 1px dashed darken($bgc, 10);
+            position: relative;
+            display: flex;
+            
+            &-name {
+                padding: 10px 0;
+                width: 100%;
+                
+                &::before {
+                    content: '';
+                    width: 2px;
+                    height: 2px;
+                    border-radius: 50%;
+                    border: 1px solid $color-1;
+                    position: absolute;
+                    left: -20px;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                    transition: all 0.2s ease;
+                }
+                
+                &:hover {
+                    font-weight: 700;
+                    background-color: darken($bgc, 2);
+                    cursor: pointer;
+                }
+                
+                &--done {
+                    color: $color-1;
+                    font-weight: bold;
+                    text-decoration: line-through;
+                    
+                    &::before {
+                        background-color: $color-1;
+                        width: 10px;
+                        height: 10px;
+                    }
+                }
+            }
+            
+            &-remove {
+                width: 30px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                font-size: 10px;
+                line-height: 10px;
+                transition: all 0.2s ease;
+                
+                &:hover {
+                    font-size: 18px;
+                    color: #FF4136;
+                    transform: translate(0, 3px) rotate(180deg);
+                }
+            }
+        }
+    }
+    
+    
+    
+    &--theme-1 {
+        @include theme(#001f3f);
+    }
+    
+    &--theme-2 {
+        @include theme(#FF851B);
+    }
+    
+    &--theme-3 {
+        @include theme(#39CCCC);
+    }
+    
+    &--theme-4 {
+        @include theme(#2ECC40);
+    }
+    
+    &--theme-5 {
+        @include theme(#0074D9);
+    }
 }
